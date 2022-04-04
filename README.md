@@ -38,4 +38,3 @@ as it seems the difference between the files is so small because we only change 
 
 ![Screenshot 2022-04-04 150109](https://user-images.githubusercontent.com/89344951/161544726-7c9ec203-c69a-42e3-9770-f4ae579f3e18.jpg)
 
-**Thank you for reading it, for any question please comment**
