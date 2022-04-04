@@ -63,7 +63,8 @@ def write_to_file():
     encrypted_text_len = len(encrypt_message)
 
     text_box.delete('1.0', 'end')
-    encrypt_details(input_text, original_text_len, old_wave, new_wave, encrypt_message)
+    file_name = file_path[:-4].split('/')[-1]
+    encrypt_details(input_text, original_text_len, old_wave, new_wave, encrypt_message, file_name)
 
 
 # *********** Main GUI section ***************
@@ -71,6 +72,11 @@ label = Label(ws, text='Hello and welcome to our \n Encrypt / Decrypt message sy
 label.config(bg='#383838', fg='#f1ebeb')
 label.place(relx=0.5, y=100, anchor='center')
 label.config(font=('Helvatical', 21, "bold"))
+
+label = Label(ws, text='By Stav Rachamim & Tal Rosner')
+label.config(bg='#383838', fg='#f1ebeb')
+label.place(relx=0.5, y=470, anchor='center')
+label.config(font=('Helvatical', 10))
 
 img = image_fun.open('encrypt_to_file.png')
 resized_img = img.resize((160, 80))
