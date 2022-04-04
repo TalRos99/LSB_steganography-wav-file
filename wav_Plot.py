@@ -99,18 +99,6 @@ def encrypt_details(input_text, original_text_len, old_wave, new_wave, encrypt_m
     label.place(relx=0.5, anchor='center')
     label.pack(pady=0)
 
-
-    label = Label(data, text="Encrypted text")
-    # label.font = ("Arial", 16)
-    label.config(bg='#f1ebeb', fg='#378bec', font=('Helvatical', 12, 'bold'))
-    label.place(relx=0.5, anchor='center')
-    label.pack(pady=0)
-
-    label = Label(data, text=str(encrypt_message)[2:-1])
-    label.config(bg='#f1ebeb', fg='black', font=('Helvatical', 10))
-    label.place(relx=0.5, anchor='center')
-    label.pack(pady=0)
-
     data_button = Button(data, height=2, width=8, bg='#378bec', fg='#f1ebeb', text="Continue", command=plot_and_continue)
     data_button2 = Button(data, height=2, width=8, bg='#378bec', fg='#f1ebeb', text="Exit", command=plot_exit)
     data_button.place(relx=0.5, x=-50, y=300, anchor='center')
