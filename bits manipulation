@@ -12,19 +12,10 @@ def split_new(word):
     return [char for char in word]
 
 def string_to_binary(text):
-    print(text)
     text_str = str(text)
-    # text = "".join(str(i) for i in text)
     text_binary = ""
     text_binary += ''.join(format(ord(i), '08b')for i in text_str)
 
-    # back_to_text = ""
-    # for binary in text_binary[:-1].split(" "):
-    #     # print(chr(int(binary, 2)))
-    #     back_to_text += chr(int(binary, 2))
-    # for i in range(len(back_to_text)-1):
-    #     if back_to_text[i] != text[i]:
-    #         print("Error", back_to_text[i], text_binary[i])
     return text_binary, len(text_binary)
 
 
@@ -39,8 +30,6 @@ def text_len_encryption(new_sound_wave, text_len):
             new_sound_wave[i] = decimal_encrypted
         else:
             new_bit = current_bit[:-1] + text_len_bit[j]
-            # print(text_len_bit[j], new_bit[-1])
-
             decimal_encrypted = int(new_bit, 2)
             new_sound_wave[i] = decimal_encrypted
             j -= 1
@@ -49,7 +38,6 @@ def text_len_encryption(new_sound_wave, text_len):
 
 def encrypt_in_file(file_path: str, recived_text):
     text, text_len = string_to_binary(recived_text)
-    # file_path = 'Forest.wav'
     if not file_path.endswith('.wav'):
         return None
     obj = wave.open(file_path) # audio source
@@ -64,15 +52,12 @@ def encrypt_in_file(file_path: str, recived_text):
     obj.close()
     count = 0
     text_len_bit = str(format(text_len, '08b'))
-    # print("encrypt: ", text_len_bit, len(text_len_bit))
     if len(data_sound_wave) < len(text_len_bit) + len(text):
-        # text is too long to enrypt
+        # text is too long to encrypt
         print("return")
         return
     new_sound_wave = text_len_encryption(new_sound_wave, text_len)
 
-    # text = text.replace(" ", '')
-    # text_len = len(text) # אחרי הורדת הרווחים למעלה אין צורך בשתי הפקודות
     j = 0
     for i in range(110, text_len * 10 + 110, 10):  # adding 1 to all LSB of the audio
         if j >= text_len:
@@ -86,25 +71,8 @@ def encrypt_in_file(file_path: str, recived_text):
             decimal_encrypted = int(new_bit, 2)
             new_sound_wave[i] = decimal_encrypted
         j += 1
-    print("i : {}, j : {}".format(i, j))
     new_file.writeframesraw(new_sound_wave)
 
-    plt.figure()
-    plt.subplot(131)
-    plt.plot(new_sound_wave)
-    plt.title('after working wave form')
-
-    plt.subplot(132)
-    plt.plot(data_sound_wave)
-    plt.title('original wave form')
-
-    plt.subplot(133)
-    plt.plot(new_sound_wave, color='black')
-    plt.plot(data_sound_wave, color='white')
-    plt.title('Represents the difference after using stenography')
-    plt.title('original wave form')
-
-    plt.show()
     return data_sound_wave, new_sound_wave
 
 
@@ -133,7 +101,6 @@ def decrypt_from_file(file_path: str):
         if p > text_len:
             break
         if k != 8:
-            # letter += data_sound_wave[i]
             letter += current_bit[-1]
         else:
             binary_text += letter
@@ -141,11 +108,7 @@ def decrypt_from_file(file_path: str):
             k = 0
             text += char
             letter = current_bit[-1]
-            if char == '=':
-                print(i)
-
         k += 1
-    print(text)
     return text
 
 
