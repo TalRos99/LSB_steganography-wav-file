@@ -1,6 +1,7 @@
 # steganography in wav file
 I'm using windows 10 and python 3.8
-if tkinter and cryptography are not installed on your computer install them using pip or on any preprable way.
+
+tkinter and cryptography should be installed on your environment. Otherwise install it using pip or on any preprable way.
 
 ***The code uses LSB method to hide the data in the file and AES method to encrypt the text***
 
